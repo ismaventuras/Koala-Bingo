@@ -1,0 +1,21 @@
+*{
+    box-sizing: border-box;
+}
+
+html,body{
+    height: 100%;
+}
+
+.container{
+    height: 500px;
+    width: 500px;
+    background-image: url('./assets/koala_card.jpg');
+    background-repeat: no-repeat;
+    background-size: contain;
+
+
+}
+
+p{
+    font-size: 20px;
+}
