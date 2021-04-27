@@ -6,9 +6,34 @@ function randomArray(){
         var r = Math.floor(Math.random() * 75) + 1;
         if(arr.indexOf(r) === -1) arr.push(r);
     }
-    arr[12] = 'Joker';
+    arr[12] = '';
     return arr
 }
+function printCard(){
+    html2canvas(document.querySelector("#container")).then(canvas => {
+        saveAs(canvas.toDataURL(),'KoalaBingoCard.png');
+    });
+}
+
+function saveAs(uri, filename) {
+    var link = document.createElement('a');
+    if (typeof link.download === 'string') {
+      link.href = uri;
+      link.download = filename;
+
+      //Firefox requires the link to be in the body
+      document.body.appendChild(link);
+
+      //simulate click
+      link.click();
+
+      //remove the link when done
+      document.body.removeChild(link);
+    } else {
+      window.open(uri);
+    }
+  }
+
 /* Coordinates
 
 1st = 230px,150px
@@ -18,6 +43,7 @@ function randomArray(){
 const img = document.getElementById('koala_bingo_img');
 const body = document.getElementsByTagName('body')[0];
 const container = document.getElementById('container');
+const print_button = document.getElementById('print-button');
 
 var xAxis = 230;
 var yAxis = 150;
@@ -41,15 +67,6 @@ for(i=0;i<5;i++){
     yAxis += 55;
 }
 
-container.addEventListener('click', (event) => {
-    console.log(event.clientX);
-    console.log(event.clientY);
-    var test = document.createElement('p');
-    test.innerText = '69'
-    test.style.position = 'absolute';
-    // test.style.left = event.pageX + 'px';
-    // test.style.top = event.pageY + 'px';
-    test.style.left = '230px';
-    test.style.top = '205px';
-    container.appendChild(test);
-})
+
+
+print_button.addEventListener('click', printCard);

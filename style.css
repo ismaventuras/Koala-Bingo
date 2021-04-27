@@ -12,10 +12,15 @@ html,body{
     background-image: url('./assets/koala_card.jpg');
     background-repeat: no-repeat;
     background-size: contain;
+    -webkit-print-color-adjust: exact !important;   /* Chrome, Safari */
+    color-adjust: exact !important;                 /*Firefox*/
 
-
+}
+button{
+    margin: 5px;
 }
 
 p{
     font-size: 20px;
 }
+
